@@ -1,0 +1,19 @@
+
+tsip -- tiny sip-like hash
+==========================
+
+This repository has Go, amd64, C, and Rust implemtations of a small fast string
+hashing function.
+
+In 2016, in an effort to strengthen Perl's default string hashing function,
+Yves Orton ( @demerphq ) and I started playing around with new hashes optimized
+for short strings rather than bulk hashing.  Yves' work at
+https://github.com/demerphq/BeagleHash ended up in Perl5
+https://github.com/perl/perl5/commit/9d5e3f1aaa70db4a786eb6a7a3437e1e1d703204
+
+This tsip is the result of my work at the time.   It didn't really go anywhere
+but it was fun to play with. It passes smhasher and has reasonably good
+performance.
+
+To see the evolution of the Go and C implemtations, see
+https://github.com/dgryski/trifles/tree/master/tsip
