@@ -36,7 +36,7 @@ int main(int argc, char *argv[]) {
 
     fclose(f);
 
-    printf("PASS\n");
+    printf("PASS %lu cases\n", i);
 
     return 0;
 }
