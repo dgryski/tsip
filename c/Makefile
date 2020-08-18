@@ -8,3 +8,6 @@ tsiptest: tsip_test.o tsip.o
 
 test: tsiptest
 	./tsiptest ../go/testdata/tsip.txt
+
+clean:
+	rm -f *.o ./tsiptest
