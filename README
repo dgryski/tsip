@@ -15,5 +15,7 @@ This tsip is the result of my work at the time.   It didn't really go anywhere
 but it was fun to play with. It passes smhasher and has reasonably good
 performance.
 
+SMHasher results: https://github.com/rurban/smhasher/blob/master/doc/TSip.txt
+
 To see the evolution of the Go and C implemtations, see
 https://github.com/dgryski/trifles/tree/master/tsip
