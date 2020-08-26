@@ -82,7 +82,7 @@ mod tests {
     use super::*;
 
     use std::fs::File;
-    use std::io::{self, BufRead};
+    use std::io::{BufRead, BufReader};
     use std::path::Path;
 
     #[test]
@@ -92,23 +92,19 @@ mod tests {
 
         let mut b = Vec::new();
 
-        if let Ok(lines) = read_lines("../go/testdata/tsip.txt") {
-            for (i, line) in lines.enumerate() {
-                if let Ok(want) = line {
-                    let want64 = u64::from_str_radix(&want, 16).unwrap();
+        let file = File::open(Path::new("../go/testdata/tsip.txt")).unwrap();
+        let reader = BufReader::new(file);
+
+        for (i, l) in reader.lines().enumerate() {
+            match l {
+                Ok(want) => {
+                    let want = u64::from_str_radix(&want, 16).unwrap();
                     let h = hash(k0, k1, &b);
-                    assert_eq!(h, want64);
+                    assert_eq!(h, want);
                     b.push(i as u8);
                 }
+                Err(err) => panic!(err),
             }
         }
-    }
-
-    fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
-    where
-        P: AsRef<Path>,
-    {
-        let file = File::open(filename)?;
-        Ok(io::BufReader::new(file).lines())
     }
 }
